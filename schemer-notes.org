@@ -9,20 +9,39 @@ The primitive ~car~ is defined only for non-empty lists
 #+end_center
 
 #+begin_center
-*The law of Cdr*
+*The Law of Cdr*
 The primitive ~cdr~ is defined only for non-empty lists. The ~cdr~ of any non-empty list is always another list.
 #+end_center
 
+#+begin_center
+*The Law of Cons*
 
+The primitive ~cons~ takes two arguments. The second argument to ~cons~ must be a list. The result is a list.
+#+end_center
 
+#+begin_center
+*The Law of Null?*
+The primitive ~null?~ is defined only for lists.
+#+end_center
 
+#+begin_center
+*The Law of Eq?*
+The primitive ~eq?~ takes two arguments. Each must be a non-numeric atom.
+#+end_center
 
-
-
-
+* Chapter 2
 
 #+begin_src scheme
-(defun lat?
+(define lat?
+  (lambda (l)
+    (cond
+     ((null? l) #t)
+     ((atom? (car l)) (lat? (cdr l)))
+     (else #f))))
+#+end_src
+
+#+begin_src scheme
+(define lat?
   (lambda (l) #t)
   ((atom? (car l) (lat? (cdr l)))
    (else #f)))
