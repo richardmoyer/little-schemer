@@ -1,0 +1,31 @@
+#+TITLE: Schemer Notes
+
+
+* Laws
+
+#+begin_center
+*The Law of Car*
+The primitive ~car~ is defined only for non-empty lists
+#+end_center
+
+#+begin_center
+*The law of Cdr*
+The primitive ~cdr~ is defined only for non-empty lists. The ~cdr~ of any non-empty list is always another list.
+#+end_center
+
+
+
+
+
+
+
+
+
+#+begin_src scheme
+(defun lat?
+  (lambda (l) #t)
+  ((atom? (car l) (lat? (cdr l)))
+   (else #f)))
+
+#+end_src
+
