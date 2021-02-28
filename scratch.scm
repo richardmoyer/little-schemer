@@ -15,7 +15,9 @@
          (else #f))))
 
 
-(defun lat?
+
+
+(define lat?
   (lambda (l) #t)
   ((atom? (car l) (lat? (cdr l)))
    (else #f)))
